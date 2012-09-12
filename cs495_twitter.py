@@ -3,13 +3,20 @@
 import twitter
 
 def post(api_handle, tweet):
-    pass
+    api_handle.PostUpdate(tweet)
 
 def last_100(api_handle, username):
-    pass
+    tweets = api_handle.GetUserTimeline(username, count=100)
+    return tweets
 
 def list_hashtags(tweets):
-    pass
+    hashtags = set()
+    for tweet in tweets:
+        hashtags.update(filter(
+            (lambda s: s[0] == u'#'),
+            filter((lambda s: len(s) > 2), tweet.text.split(' '))))
+    return hashtags
+
 
 def main():
     # Read in the secrets
