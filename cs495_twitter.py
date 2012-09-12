@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import twitter
 
 def post(twitter_handle, tweet):
